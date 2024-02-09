@@ -2,7 +2,6 @@ package intTestObject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 
 public class HomePageObject {
@@ -43,5 +42,16 @@ public class HomePageObject {
 	        driver.findElement(contactUs).click();
 	        System.out.println("Contact us Button is clicked");
 	        return  new ContactUsPage(driver);
+	    }
+	 
+	 public boolean isWhyTendableVisible()
+	    {
+	        return driver.findElement(whyTendable).isDisplayed();
+	    }
+
+	    public TendablePageObject tendableClick()
+	    {
+	        driver.findElement(whyTendable).click();
+	        return new TendablePageObject(driver);
 	    }
 }

@@ -12,6 +12,7 @@ import org.testng.annotations.Test;
 import intTestObject.ContactUsPage;
 import intTestObject.HomePageObject;
 import intTestObject.OurSolutionPage;
+import intTestObject.TendablePageObject;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class scenarios {
@@ -20,6 +21,7 @@ public class scenarios {
 	HomePageObject hmp;
 	OurSolutionPage osp;
 	ContactUsPage cup;
+	TendablePageObject tpo;
 
 	@BeforeTest
 	public HomePageObject beforeTest() {
@@ -42,6 +44,11 @@ public class scenarios {
 		Assert.assertTrue(value);
 		osp = hmp.solutionClick();
 		Assert.assertEquals(osp.getUrl(), "https://www.tendable.com/our-solution");
+		Assert.assertTrue(hmp.verifyRequestDemo());
+		tpo = hmp.tendableClick();
+		Assert.assertTrue(tpo.getCurrentUrl().equalsIgnoreCase("https://www.tendable.com/why-tendable"));
+		Assert.assertTrue(hmp.verifyRequestDemo());
+
 
 	}
 
